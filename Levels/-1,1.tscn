@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actionables/Door/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Goblin/Goblin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/Bat/Bat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://LeverAndButton/Lever.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/JumpOrb.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 2.4
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.35, 1.5, 1.65, 1.8, 1.95, 2.1, 2.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 3, 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "open"
+length = 1.56
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "open" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84, 0.96, 1.08, 1.2, 1.32, 1.44, 1.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84, 0.96, 1.08, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 6.341, 22 ), Vector2( 6.341, 20 ), Vector2( 6.341, 18 ), Vector2( 6.341, 16 ), Vector2( 6.341, 14 ), Vector2( 6.341, 12 ), Vector2( 6.341, 10 ), Vector2( 6.341, 8 ), Vector2( 6.341, 6 ), Vector2( 6.341, 4 ), Vector2( 6.341, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84, 0.96, 1.08, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.122, 2 ), Vector2( 1.122, 4 ), Vector2( 1.122, 6 ), Vector2( 1.122, 8 ), Vector2( 1.122, 10 ), Vector2( 1.122, 12 ), Vector2( 1.122, 14 ), Vector2( 1.122, 16 ), Vector2( 1.122, 18 ), Vector2( 1.122, 20 ), Vector2( 1.122, 22 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.2, 1.32 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="-1,1" instance=ExtResource( 1 )]
+
+[node name="WaterTileMap" parent="." index="1"]
+tile_data = PoolIntArray( 65546, 0, 0, 131082, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0 )
+
+[node name="TileMap" parent="." index="3"]
+tile_data = PoolIntArray( 0, 3, 65537, 1, 3, 65539, 7, 3, 65541, 8, 3, 65537, 9, 3, 65537, 10, 3, 65537, 11, 3, 65537, 12, 3, 65537, 13, 3, 65537, 14, 3, 65537, 15, 3, 65537, 16, 3, 65537, 17, 3, 65537, 18, 3, 65537, 19, 3, 65537, 20, 3, 65537, 21, 3, 65537, 22, 3, 65537, 23, 3, 65537, 65536, 3, 65537, 65537, 3, 65539, 65543, 3, 65541, 65544, 3, 65537, 65545, 3, 3, 65546, 3, 131073, 65547, 3, 131073, 65548, 3, 4, 65549, 3, 4, 65550, 3, 4, 65551, 3, 4, 65552, 3, 4, 65553, 3, 4, 65554, 3, 4, 65555, 3, 5, 65556, 3, 65537, 65557, 3, 65537, 65558, 3, 65537, 65559, 3, 65537, 131072, 3, 65537, 131073, 3, 65539, 131079, 3, 65541, 131080, 3, 65537, 131081, 3, 65539, 131091, 3, 131072, 131092, 3, 4, 131093, 3, 4, 131094, 3, 4, 131095, 3, 4, 196608, 3, 65537, 196609, 3, 65539, 196615, 3, 65541, 196616, 3, 65537, 196617, 3, 65539, 262144, 3, 131073, 262145, 3, 131074, 262151, 3, 131072, 262152, 3, 131073, 262153, 3, 131074, 524288, 3, 1, 524289, 3, 2, 524295, 3, 0, 524296, 3, 1, 524297, 3, 2, 524311, 3, 0, 589824, 3, 65537, 589825, 3, 65539, 589831, 3, 65541, 589832, 3, 65537, 589833, 3, 131075, 589834, 3, 2, 589846, 3, 0, 589847, 3, 131077, 655360, 3, 3, 655361, 3, 131074, 655367, 3, 65541, 655368, 3, 65537, 655369, 3, 65537, 655370, 3, 131075, 655371, 3, 1, 655372, 3, 1, 655373, 3, 2, 655379, 3, 0, 655380, 3, 1, 655381, 3, 1, 655382, 3, 131077, 655383, 3, 65537, 720896, 3, 65539, 720903, 3, 65541, 720904, 3, 65537, 720905, 3, 65537, 720906, 3, 65537, 720907, 3, 65537, 720908, 3, 65537, 720909, 3, 131075, 720910, 3, 1, 720911, 3, 1, 720912, 3, 1, 720913, 3, 1, 720914, 3, 1, 720915, 3, 131077, 720916, 3, 65537, 720917, 3, 65537, 720918, 3, 65537, 720919, 3, 65537, 786432, 3, 65539, 786439, 3, 65541, 786440, 3, 65537, 786441, 3, 65537, 786442, 3, 65537, 786443, 3, 65537, 786444, 3, 65537, 786445, 3, 65537, 786446, 3, 65537, 786447, 3, 65537, 786448, 3, 65537, 786449, 3, 65537, 786450, 3, 65537, 786451, 3, 65537, 786452, 3, 65537, 786453, 3, 65537, 786454, 3, 65537, 786455, 3, 65537, 851968, 3, 65539, 851975, 3, 65541, 851976, 3, 65537, 851977, 3, 65537, 851978, 3, 65537, 851979, 3, 65537, 851980, 3, 65537, 851981, 3, 65537, 851982, 3, 65537, 851983, 3, 65537, 851984, 3, 65537, 851985, 3, 65537, 851986, 3, 65537, 851987, 3, 65537, 851988, 3, 65537, 851989, 3, 65537, 851990, 3, 65537, 851991, 3, 65537 )
+
+[node name="PlatformsTileMap" parent="." index="4"]
+tile_data = PoolIntArray( 262154, 2, 0, 262155, 1, 0, 327693, 1, 0 )
+
+[node name="Goblin" parent="Enemies" index="0" instance=ExtResource( 3 )]
+position = Vector2( 248, 168.368 )
+
+[node name="Goblin2" parent="Enemies" index="1" instance=ExtResource( 3 )]
+position = Vector2( 200, 152 )
+
+[node name="Goblin3" parent="Enemies" index="2" instance=ExtResource( 3 )]
+position = Vector2( 328, 152 )
+
+[node name="Bat" parent="Enemies" index="3" instance=ExtResource( 4 )]
+position = Vector2( 200, 40 )
+
+[node name="JumpOrb" parent="Objects" index="0" instance=ExtResource( 6 )]
+position = Vector2( 176, 88 )
+frame = 1
+
+[node name="Door" parent="Actionables" index="0" instance=ExtResource( 2 )]
+position = Vector2( 24, 104 )
+link_code = 7
+
+[node name="Door2" parent="Actionables" index="1" instance=ExtResource( 2 )]
+position = Vector2( 120, 104 )
+link_code = 7
+
+[node name="AnimatedSprite" parent="Actionables/Door2" index="0"]
+frame = 2
+flip_h = true
+
+[node name="AnimationPlayer" parent="Actionables/Door2" index="2"]
+anims/idle = SubResource( 1 )
+anims/open = SubResource( 2 )
+
+[node name="Lever" parent="ButtonsAndLevers" index="0" instance=ExtResource( 5 )]
+position = Vector2( 176, 56 )
+link_code = 7
+
+[editable path="Actionables/Door2"]

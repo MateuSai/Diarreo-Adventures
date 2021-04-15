@@ -1,0 +1,86 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Objects/Collectable.gd" type="Script" id=1]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/coin_anim_strip_6.png" type="Texture" id=2]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/coin_pickup_anim_strip_6.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Coin.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/CoinSound.wav" type="AudioStream" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 40, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 8, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 8, 0, 8, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 8, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 24, 0, 8, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 8, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 40, 0, 8, 16 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": false,
+"name": "collect",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 4.06613
+
+[node name="Coin" type="AnimatedSprite"]
+frames = SubResource( 13 )
+frame = 3
+playing = true
+script = ExtResource( 4 )
+
+[node name="Collectable" type="Area2D" parent="."]
+script = ExtResource( 1 )
+fade_after_collect = false
+sound = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
+shape = SubResource( 14 )
+[connection signal="animation_finished" from="." to="." method="_on_Coin_animation_finished"]

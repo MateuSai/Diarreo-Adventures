@@ -1,0 +1,21 @@
+id,en,ca,es
+string_move_sign,Use the arrows or the left joystick to move,Utilitza les fletxes o la palanca esquerra per moure't,Usa las flechas o la palanca izquierda para moverte
+string_forest_sign,The forest,Bosc,Bosque
+string_cave_sign,Underground galleries,Galeries subterrànies,Galerías subterráneas
+string_attack_sign,Space or X button in a controller to attack,Espai o botó X del comandament per atacar,Espacio o botón X del mando para atacar
+string_shaman_sign,"Shaman, be careful.","Xaman, ves amb compte.","Chamán, ten cuidado."
+string_cliff_sign,Cliff ahead,Precipici a davant,Precipicio delante
+string_exit_sign,Exit,Sortida,Salida
+string_start_point_save_point,Start Point,Punt d’inici,Punto Inicial
+string_forest_save_point,Forest,Bosc,Bosque
+string_cave_save_point,Underground galleries,Galeries subterrànies,Galerías subterráneas
+string_shaman_house_save_point,Shaman Territory,Territori del Xaman,Territorio del Xaman
+string_introductory_dialogue_1,"Oh no! {p=0.8}My diarrhea has worsened. {0.3} Today, I have arleady had seven bowel movements.",Batua l’olla! {p=0.8}La meva diarrea ha empitjorat. {0.3} Avui ja he anat de ventre set vegades.,¡Oh no! {p=0.8}Mi diarrea ha empeorado. {0.3} Hoy he ido de vientre siete veces.
+string_introductory_dialogue_2,"In addition, I have hemorrhoids. I can’t even sit.","A més a més, tinc hemorroides. Ni tan sols puc seure.","Además tengo hemorroides, ni siquiera puedo sentar-me."
+string_introductory_dialogue_3,"My asshole hurts,{0.2} I can not stand it any longer!{0.3} I have to visit the shaman, maybe he will have a cure.","Em fa mal el forat del cul,{0.2} ja no ho aguanto més!{0.3} Hauré d'anar a veure el xaman, potser ell té una cura.","Me duele el agujero del culo,{0.2} ¡ya no lo aguanto más!{0.3} Tendré que hacer una visita al chamán, puede que él tenga una cura."
+string_meat_dialogue,"This meat is very tasty, I feel more burly! {p=1.5} But this will not cure my diarrhea…","Aquesta carn és deliciosa, em sento més corpulent! {p=1.5} Però això no curarà la meva diarrea...","Esta carne es muy sabrosa, me siento más corpulento! {p=1.5} Pero esto no curará mi diarrea…"
+string_apple_dialogue,I feel more light! {p=1.5} Holy cow! My asshole is about to explode! I have to find the shaman quickly.,Em sento més lleuger! {p=1.5} Mare meva! M'està a punt d'explotar el cul! He de trobar el xaman ràpidament.,¡Me siento más ligero! {p=1.5} La madre del cordero! ¡Me esta a punto de explotar el ojete! Necesito encontrar el chamán quanto antes mejor.
+string_pre_final_battle_dialogue,Here he is! {p=0.5} I have to kill her and stole his magic potion. This is the only way to cure my diarrhea.,Aquí està! {p=0.5} Le de matar i robar-li la seva poció màgica. Aquesta és l'única manera de curar la meva diarrea.,¡Aquí esta! {p=0.5} Tengo que matarlo y robarle su poción mágica. Es la única forma de curar mi diarrea.
+string_continue_button,Continue,Continuar,Continuar
+string_exit_button,Exit,Sortir,Salir
+string_travel_button,Travel,Viatge,Viaja

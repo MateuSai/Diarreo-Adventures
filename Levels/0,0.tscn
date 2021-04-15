@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://SavePoint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Decorations/Sign/Sign.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=4]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/arrow_plate_left.png" type="Texture" id=6]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/arrow_plate_right.png" type="Texture" id=7]
+[ext_resource path="res://Decorations/Vase/Vase.tscn" type="PackedScene" id=8]
+
+[node name="0,0" instance=ExtResource( 4 )]
+
+[node name="TileMap" parent="." index="3"]
+tile_data = PoolIntArray( 131072, 2, 2, 196608, 2, 65539, 262144, 2, 65539, 327680, 2, 65539, 393216, 2, 131075, 393217, 0, 1, 393218, 0, 1, 393219, 0, 1, 393220, 0, 131076, 393221, 0, 2, 458752, 2, 131073, 458753, 0, 131073, 458754, 0, 131073, 458755, 0, 131073, 458756, 0, 4, 458757, 0, 131074, 720918, 0, 0, 720919, 2, 1, 786432, 0, 1, 786433, 0, 1, 786434, 2, 1, 786435, 2, 2, 786450, 0, 0, 786451, 0, 131076, 786452, 0, 131076, 786453, 0, 1, 786454, 0, 131077, 786455, 2, 65537, 851968, 2, 65537, 851969, 2, 65537, 851970, 2, 65537, 851971, 2, 131075, 851972, 2, 131076, 851973, 2, 131076, 851974, 2, 131076, 851975, 2, 131076, 851976, 2, 131076, 851977, 2, 131076, 851978, 2, 131076, 851979, 2, 131076, 851980, 2, 131076, 851981, 0, 1, 851982, 0, 1, 851983, 0, 1, 851984, 0, 1, 851985, 0, 1, 851986, 2, 131077, 851987, 2, 65537, 851988, 2, 65537, 851989, 2, 65537, 851990, 2, 65537, 851991, 2, 65537 )
+
+[node name="PlatformsTileMap" parent="." index="4"]
+tile_data = PoolIntArray( 458758, 2, 0, 524295, 1, 0, 589832, 1, 0, 655369, 1, 0, 720906, 1, 0, 786443, 1, 0 )
+
+[node name="Sign" parent="Decorations" index="0" instance=ExtResource( 3 )]
+position = Vector2( 108.5, 200 )
+texture = ExtResource( 6 )
+text = "string_cave_sign"
+
+[node name="Sign2" parent="Decorations" index="1" instance=ExtResource( 3 )]
+position = Vector2( 80, 88.5 )
+text = "string_move_sign"
+
+[node name="Sign3" parent="Decorations" index="2" instance=ExtResource( 3 )]
+position = Vector2( 223.5, 200 )
+texture = ExtResource( 7 )
+text = "string_forest_sign"
+
+[node name="Vase" parent="Decorations" index="3" instance=ExtResource( 8 )]
+position = Vector2( 263.5, 200 )
+
+[node name="SavePoint" parent="." index="11" instance=ExtResource( 1 )]
+position = Vector2( 56, 87 )
+frame = 8

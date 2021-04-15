@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemies/Worm/Worm.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actionables/Door/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Decorations/Sign/Sign.tscn" type="PackedScene" id=4]
+[ext_resource path="res://LeverAndButton/Lever.tscn" type="PackedScene" id=5]
+
+[node name="1,0" instance=ExtResource( 3 )]
+
+[node name="TileMap" parent="." index="3"]
+tile_data = PoolIntArray( 23, 2, 65541, 65559, 2, 65541, 131095, 2, 65541, 196631, 2, 65541, 262167, 2, 65541, 327703, 2, 65541, 393233, 1, 0, 393234, 1, 1, 393235, 1, 2, 393239, 2, 65541, 458775, 2, 65541, 524299, 3, 0, 524300, 3, 1, 524301, 3, 2, 524311, 2, 65541, 589835, 3, 131072, 589836, 3, 4, 589837, 8, 0, 589838, 3, 1, 589839, 3, 2, 589847, 2, 65541, 655366, 1, 0, 655367, 1, 2, 655373, 3, 131072, 655374, 3, 4, 655375, 8, 0, 655376, 3, 1, 655377, 3, 1, 655378, 3, 2, 655383, 2, 65541, 720896, 2, 1, 720897, 0, 131076, 720898, 0, 1, 720899, 0, 2, 720911, 3, 131072, 720912, 3, 4, 720913, 3, 4, 720914, 8, 0, 720915, 3, 2, 720918, 0, 0, 720919, 2, 131077, 786432, 2, 65537, 786433, 0, 65537, 786434, 0, 65537, 786435, 0, 131075, 786436, 0, 2, 786450, 3, 65536, 786451, 3, 131075, 786452, 3, 1, 786453, 0, 1, 786454, 0, 131077, 786455, 2, 65537, 851968, 2, 65537, 851969, 2, 65537, 851970, 2, 65537, 851971, 2, 65537, 851972, 2, 131075, 851973, 0, 1, 851974, 0, 1, 851975, 0, 1, 851976, 0, 1, 851977, 0, 1, 851978, 0, 1, 851979, 3, 2, 851982, 3, 0, 851983, 3, 1, 851984, 3, 1, 851985, 3, 1, 851986, 3, 131077, 851987, 3, 65537, 851988, 3, 65537, 851989, 3, 65537, 851990, 3, 65537, 851991, 3, 65537 )
+
+[node name="PlatformsTileMap" parent="." index="4"]
+tile_data = PoolIntArray( 20, 1, 0, 65558, 0, 0, 131092, 1, 0, 196630, 0, 0, 262164, 1, 0, 327702, 0, 0, 458774, 0, 0, 524308, 1, 0, 589834, 0, 0, 589846, 0, 0, 851980, 2, 0 )
+
+[node name="Worm" parent="Enemies" index="0" instance=ExtResource( 1 )]
+position = Vector2( 154.5, 202 )
+
+[node name="Sign" parent="Decorations" index="0" instance=ExtResource( 4 )]
+position = Vector2( 43.5, 169 )
+text = "string_attack_sign"
+
+[node name="Door" parent="Actionables" index="0" instance=ExtResource( 2 )]
+position = Vector2( 184, 184 )
+link_code = 8
+
+[node name="Lever" parent="ButtonsAndLevers" index="0" instance=ExtResource( 5 )]
+position = Vector2( 264, 200 )
+link_code = 8

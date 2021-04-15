@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://Translations/Diarreo Adventures Translations.en.translation", "res://Translations/Diarreo Adventures Translations.ca.translation", "res://Translations/Diarreo Adventures Translations.es.translation" ]
+
+source_file="res://Translations/Diarreo Adventures Translations.csv"
+dest_files=[ "res://Translations/Diarreo Adventures Translations.en.translation", "res://Translations/Diarreo Adventures Translations.ca.translation", "res://Translations/Diarreo Adventures Translations.es.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

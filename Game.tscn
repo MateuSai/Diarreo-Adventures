@@ -1,0 +1,191 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/Boxy-Bold-Font/Boxy-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI/GameUI.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/GameOverSound.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/cave themeb4.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Fonts/FutilePro.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://UI/DialogueManager.gd" type="Script" id=9]
+[ext_resource path="res://UI/PauseUI.gd" type="Script" id=10]
+[ext_resource path="res://UI/ArrowSpritesFrame.tres" type="SpriteFrames" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.5, 101.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 188.687, 2 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2, 101 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 192.568, 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 8 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Levels" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 30, 32 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Left" type="Area2D" parent="Camera2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Left"]
+position = Vector2( -7.5, 108 )
+shape = SubResource( 1 )
+
+[node name="Up" type="Area2D" parent="Camera2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Up"]
+position = Vector2( 192.04, -6.89685 )
+shape = SubResource( 2 )
+
+[node name="Right" type="Area2D" parent="Camera2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Right"]
+position = Vector2( 391, 109 )
+shape = SubResource( 3 )
+
+[node name="Down" type="Area2D" parent="Camera2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Down"]
+position = Vector2( 192.128, 223 )
+shape = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource( 4 )
+
+[node name="GameOver" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="RichTextLabel" parent="UI/GameOver"]
+anchor_right = 1.0
+margin_top = 30.0
+margin_right = -192.0
+margin_bottom = 130.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center][fade start=-7 length=25]GAME OVER[/fade][/center]"
+text = "GAME OVER"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverTween" type="Tween" parent="UI/GameOver/GameOverLabel"]
+
+[node name="GameOverTimer" type="Timer" parent="UI/GameOver"]
+one_shot = true
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="UI/GameOver"]
+stream = ExtResource( 6 )
+
+[node name="DialogueManager" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnterTween" type="Tween" parent="UI/DialogueManager"]
+
+[node name="LeaveTween" type="Tween" parent="UI/DialogueManager"]
+
+[node name="Pause" type="Control" parent="UI"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.0
+margin_top = -22.0
+margin_right = 94.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" type="Label" parent="UI/Pause/VBoxContainer"]
+margin_left = 6.0
+margin_right = 182.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 6 )
+text = "string_continue_button"
+align = 1
+valign = 1
+
+[node name="ExitButton" type="Label" parent="UI/Pause/VBoxContainer"]
+margin_left = 24.0
+margin_top = 18.0
+margin_right = 164.0
+margin_bottom = 32.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 6 )
+text = "string_exit_button"
+align = 1
+valign = 1
+
+[node name="Arrow" type="AnimatedSprite" parent="UI/Pause"]
+frames = ExtResource( 11 )
+frame = 3
+
+[node name="CaveSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+[connection signal="body_entered" from="Camera2D/Left" to="." method="_on_player_exit_camera" binds= [ Vector2( -1, 0 ) ]]
+[connection signal="body_entered" from="Camera2D/Up" to="." method="_on_player_exit_camera" binds= [ Vector2( 0, -1 ) ]]
+[connection signal="body_entered" from="Camera2D/Right" to="." method="_on_player_exit_camera" binds= [ Vector2( 1, 0 ) ]]
+[connection signal="body_entered" from="Camera2D/Down" to="." method="_on_player_exit_camera" binds= [ Vector2( 0, 1 ) ]]
+[connection signal="timeout" from="UI/GameOver/GameOverTimer" to="UI" method="_on_GameOverTimer_timeout"]
+[connection signal="tween_completed" from="UI/DialogueManager/EnterTween" to="UI/DialogueManager" method="_on_EnterTween_tween_completed"]
+[connection signal="tween_completed" from="UI/DialogueManager/LeaveTween" to="UI/DialogueManager" method="_on_LeaveTween_tween_completed"]
+[connection signal="tween_completed" from="UI/DialogueManager/LeaveTween" to="." method="_on_LeaveTween_tween_completed"]

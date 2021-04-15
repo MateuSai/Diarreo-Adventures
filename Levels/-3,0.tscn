@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/bg_0.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Worm/Worm.tscn" type="PackedScene" id=3]
+[ext_resource path="res://LeverAndButton/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actionables/Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LeverAndButton/Lever.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/JumpOrb.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Actionables/SpikeShooter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Decorations/Sign/Sign.tscn" type="PackedScene" id=10]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/arrow_plate_left.png" type="Texture" id=11]
+[ext_resource path="res://SavePoint.tscn" type="PackedScene" id=12]
+
+[node name="-3,0" instance=ExtResource( 1 )]
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="TileMap" parent="." index="3"]
+tile_data = PoolIntArray( 0, 2, 3, 1, 2, 4, 2, 2, 131074, 22, 2, 131072, 23, 2, 131073, 65536, 2, 65538, 131072, 2, 131075, 131073, 2, 2, 131090, 1, 0, 131091, 1, 2, 196608, 2, 65537, 196609, 2, 65539, 262144, 2, 4, 262145, 2, 131074, 327694, 1, 0, 327695, 1, 2, 458757, 2, 0, 458758, 2, 1, 458759, 2, 1, 458760, 2, 1, 458761, 2, 1, 458762, 2, 1, 458763, 2, 2, 524288, 2, 1, 524289, 2, 1, 524290, 2, 1, 524291, 2, 1, 524292, 2, 1, 524293, 2, 131077, 524294, 2, 65537, 524295, 2, 65537, 524296, 2, 65537, 524297, 2, 65537, 524298, 2, 65537, 524299, 2, 131075, 524300, 2, 1, 524301, 2, 1, 524302, 2, 1, 524303, 2, 1, 524304, 2, 1, 524305, 2, 2, 589824, 2, 65537, 589825, 2, 65537, 589826, 2, 65537, 589827, 2, 65537, 589828, 2, 65537, 589829, 2, 65537, 589830, 2, 3, 589831, 2, 4, 589832, 2, 4, 589833, 2, 131073, 589834, 2, 131073, 589835, 2, 131073, 589836, 2, 131073, 589837, 2, 131073, 589838, 2, 131073, 589839, 2, 131073, 589840, 2, 5, 589841, 2, 131075, 589842, 2, 1, 589843, 2, 2, 655360, 2, 65537, 655361, 2, 65537, 655362, 2, 65537, 655363, 2, 65537, 655364, 2, 65537, 655365, 2, 65537, 655366, 2, 65538, 655376, 2, 65536, 655377, 2, 65537, 655378, 2, 65537, 655379, 2, 131075, 655380, 2, 2, 720896, 2, 65537, 720897, 2, 65537, 720898, 2, 65537, 720899, 2, 65537, 720900, 2, 65537, 720901, 2, 65537, 720902, 2, 65538, 720912, 2, 65536, 720913, 2, 65537, 720914, 2, 65537, 720915, 2, 65537, 720916, 2, 65539, 786432, 2, 65537, 786433, 2, 65537, 786434, 2, 65537, 786435, 2, 65537, 786436, 2, 65537, 786437, 2, 65537, 786438, 2, 65538, 786448, 2, 65536, 786449, 2, 65537, 786450, 2, 65537, 786451, 2, 65537, 786452, 2, 131075, 786453, 2, 1, 786454, 2, 1, 786455, 2, 1, 851968, 2, 65537, 851969, 2, 65537, 851970, 2, 65537, 851971, 2, 65537, 851972, 2, 65537, 851973, 2, 65537, 851974, 2, 131075, 851975, 2, 1, 851976, 2, 1, 851977, 2, 1, 851978, 2, 1, 851979, 2, 1, 851980, 2, 1, 851981, 2, 1, 851982, 2, 1, 851983, 2, 1, 851984, 2, 131077, 851985, 2, 65537, 851986, 2, 65537, 851987, 2, 65537, 851988, 2, 65537, 851989, 2, 65537, 851990, 2, 65537, 851991, 2, 65537 )
+
+[node name="PlatformsTileMap" parent="." index="4"]
+tile_data = PoolIntArray( 21, 1, 0, 131074, 2, 0, 131075, 1, 0 )
+
+[node name="Worm" parent="Enemies" index="0" instance=ExtResource( 3 )]
+position = Vector2( 130, 204 )
+
+[node name="JumpOrb" parent="Objects" index="0" instance=ExtResource( 8 )]
+position = Vector2( 270, 61 )
+frame = 1
+
+[node name="Sign" parent="Decorations" index="0" instance=ExtResource( 10 )]
+position = Vector2( 91, 104 )
+texture = ExtResource( 11 )
+text = "string_shaman_sign"
+
+[node name="Door" parent="Actionables" index="0" instance=ExtResource( 5 )]
+position = Vector2( 216, 184 )
+link_code = 13
+
+[node name="Door2" parent="Actionables" index="1" instance=ExtResource( 5 )]
+position = Vector2( 169, 184 )
+link_code = 11
+
+[node name="Door3" parent="Actionables" index="2" instance=ExtResource( 5 )]
+position = Vector2( 23, 104 )
+link_code = 10
+
+[node name="SpikeShooter" parent="Actionables" index="3" instance=ExtResource( 9 )]
+position = Vector2( 232, 103 )
+link_code = 12
+
+[node name="SpikeShooter2" parent="Actionables" index="4" instance=ExtResource( 9 )]
+position = Vector2( 248, 103 )
+link_code = 12
+
+[node name="SpikeShooter3" parent="Actionables" index="5" instance=ExtResource( 9 )]
+position = Vector2( 296, 55 )
+link_code = 12
+
+[node name="SpikeShooter4" parent="Actionables" index="6" instance=ExtResource( 9 )]
+position = Vector2( 312, 55 )
+link_code = 12
+
+[node name="Button" parent="ButtonsAndLevers" index="0" instance=ExtResource( 4 )]
+position = Vector2( 240, 206 )
+link_code = 10
+
+[node name="Button3" parent="ButtonsAndLevers" index="1" instance=ExtResource( 4 )]
+position = Vector2( 152, 206 )
+link_code = 12
+
+[node name="Button4" parent="ButtonsAndLevers" index="2" instance=ExtResource( 4 )]
+position = Vector2( 120, 110 )
+link_code = 13
+
+[node name="Lever" parent="ButtonsAndLevers" index="3" instance=ExtResource( 6 )]
+position = Vector2( 22, 24.4749 )
+link_code = 11
+
+[node name="SavePoint" parent="." index="13" instance=ExtResource( 12 )]
+position = Vector2( 145, 102 )
+frame = 3

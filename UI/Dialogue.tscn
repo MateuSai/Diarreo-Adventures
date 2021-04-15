@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://platform_metroidvania asset pack v1.01/Dialogue Window.png" type="Texture" id=1]
+[ext_resource path="res://UI/Dialogue.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/FutilePro.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sounds/TypeSound.wav" type="AudioStream" id=4]
+[ext_resource path="res://UI/AudioRandomizer.gd" type="Script" id=5]
+[ext_resource path="res://UI/PauseCalculator.gd" type="Script" id=6]
+[ext_resource path="res://UI/PassArrow.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 3 )
+
+[node name="Dialogue" type="TextureRect"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -84.0
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 25.0
+margin_right = 5.0
+margin_bottom = -2.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypeTimer" type="Timer" parent="."]
+wait_time = 0.06
+
+[node name="PauseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="typeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -2.0
+script = ExtResource( 5 )
+
+[node name="PauseCalculator" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="FinishedIndicator" type="Sprite" parent="."]
+position = Vector2( 368, 74 )
+texture = ExtResource( 7 )
+[connection signal="timeout" from="TypeTimer" to="." method="_on_TypeTimer_timeout"]
+[connection signal="timeout" from="PauseTimer" to="." method="_on_PauseTimer_timeout"]
+[connection signal="finished" from="typeSound" to="." method="_on_typeSound_finished"]
+[connection signal="pause_requested" from="PauseCalculator" to="." method="_on_PauseCalculator_pause_requested"]

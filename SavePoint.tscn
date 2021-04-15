@@ -1,0 +1,260 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/save_point_saving_anim_strip_3.png" type="Texture" id=1]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/save_point_anim_strip_9.png" type="Texture" id=2]
+[ext_resource path="res://SavePoint.gd" type="Script" id=3]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/SavePointPanel.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/FutilePro.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://UI/ArrowSpritesFrame.tres" type="SpriteFrames" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 12, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 36, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 60, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 72, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 84, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 12, 0, 12, 20 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 0, 12, 20 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "active",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=14]
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 5 )
+
+[node name="SavePoint" type="AnimatedSprite"]
+frames = SubResource( 13 )
+playing = true
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 14 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="NinePatchRect" parent="CanvasLayer"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.85098 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -59.5
+margin_right = 60.0
+margin_bottom = 59.5
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 12, 16 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 5.0
+margin_right = -3.0
+margin_bottom = -5.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TeleportLabel" type="Label" parent="CanvasLayer/Menu/VBoxContainer"]
+margin_top = 17.0
+margin_right = 114.0
+margin_bottom = 35.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 15 )
+text = "string_travel_button"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuLabel" type="Label" parent="CanvasLayer/Menu/VBoxContainer"]
+margin_top = 45.0
+margin_right = 114.0
+margin_bottom = 63.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 15 )
+text = "Menu"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitLabel" type="Label" parent="CanvasLayer/Menu/VBoxContainer"]
+margin_top = 73.0
+margin_right = 114.0
+margin_bottom = 91.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 15 )
+text = "string_exit_button"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="AnimatedSprite" parent="CanvasLayer/Menu"]
+position = Vector2( -3.92615, 28.7653 )
+frames = ExtResource( 6 )
+frame = 1
+playing = true
+
+[node name="TeleportMenu" type="NinePatchRect" parent="CanvasLayer"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.85098 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.5
+margin_top = -68.0
+margin_right = 94.5
+margin_bottom = 68.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 12, 16 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TeleportMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 5.0
+margin_right = -3.0
+margin_bottom = -5.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartPointLabel" type="Label" parent="CanvasLayer/TeleportMenu/VBoxContainer"]
+margin_top = 20.0
+margin_right = 250.0
+margin_bottom = 34.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 15 )
+text = "string_start_point_save_point"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ForestLabel" type="Label" parent="CanvasLayer/TeleportMenu/VBoxContainer"]
+margin_top = 44.0
+margin_right = 250.0
+margin_bottom = 58.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 15 )
+text = "string_forest_save_point"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CaveLabel" type="Label" parent="CanvasLayer/TeleportMenu/VBoxContainer"]
+margin_top = 68.0
+margin_right = 250.0
+margin_bottom = 82.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 15 )
+text = "string_cave_save_point"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShamanTerritoryLabel" type="Label" parent="CanvasLayer/TeleportMenu/VBoxContainer"]
+margin_top = 92.0
+margin_right = 250.0
+margin_bottom = 106.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 15 )
+text = "string_shaman_house_save_point"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="AnimatedSprite" parent="CanvasLayer/TeleportMenu"]
+position = Vector2( -3.92615, 28.7653 )
+frames = ExtResource( 6 )
+playing = true
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_player_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_player_exited"]

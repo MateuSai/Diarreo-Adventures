@@ -1,0 +1,150 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Enemies/Worm/Worm.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Worm/WormFSM.gd" type="Script" id=2]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/enemies sprites/worm_spritesheet.png" type="Texture" id=3]
+[ext_resource path="res://HitBox.gd" type="Script" id=4]
+[ext_resource path="res://UI/AudioRandomizer.gd" type="Script" id=5]
+[ext_resource path="res://Sounds/HurtPlayerSound.wav" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.98846, 1.74168 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 2.56921
+height = 7.21693
+
+[sub_resource type="Animation" id=3]
+resource_name = "crawl"
+length = 0.9
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "dead"
+length = 0.9
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.8
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14 ]
+}
+
+[node name="Worm" type="KinematicBody2D"]
+collision_layer = 2147483652
+script = ExtResource( 1 )
+speed = 30
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+vframes = 3
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0743256, 2.30409 )
+shape = SubResource( 1 )
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( 0, 1.56084 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="HitBox"]
+stream = ExtResource( 6 )
+script = ExtResource( 5 )
+
+[node name="FloorRayCasts" type="Node2D" parent="."]
+
+[node name="LeftRayCast" type="RayCast2D" parent="FloorRayCasts"]
+position = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+
+[node name="RightRayCast" type="RayCast2D" parent="FloorRayCasts"]
+position = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+
+[node name="WallRayCasts" type="Node2D" parent="."]
+
+[node name="LeftRayCast" type="RayCast2D" parent="WallRayCasts"]
+enabled = true
+cast_to = Vector2( -8, 0 )
+
+[node name="RightRayCast" type="RayCast2D" parent="WallRayCasts"]
+enabled = true
+cast_to = Vector2( 8, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/crawl = SubResource( 3 )
+anims/dead = SubResource( 4 )
+anims/hurt = SubResource( 5 )

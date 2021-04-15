@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/Collectable.gd" type="Script" id=1]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/meat_item.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Meat.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.39734
+
+[node name="Meat" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Collectable" type="Area2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
+shape = SubResource( 1 )

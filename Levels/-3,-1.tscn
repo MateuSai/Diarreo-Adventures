@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/bg_0.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Apple.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Chest/Chest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Traps/Spikes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://CheckPoint.tscn" type="PackedScene" id=6]
+
+[node name="-3,-1" instance=ExtResource( 1 )]
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="TileMap" parent="." index="3"]
+tile_data = PoolIntArray( 0, 2, 3, 1, 2, 131073, 2, 2, 131073, 3, 2, 131073, 4, 2, 131073, 5, 2, 131073, 6, 2, 131073, 7, 2, 131073, 8, 2, 131073, 9, 2, 131073, 10, 2, 131073, 11, 2, 131073, 12, 2, 131073, 13, 2, 131073, 14, 2, 131073, 15, 2, 131073, 16, 2, 131073, 17, 2, 4, 18, 2, 4, 19, 2, 4, 20, 2, 4, 21, 2, 4, 22, 2, 4, 23, 2, 5, 65536, 2, 65539, 65559, 2, 65541, 131072, 2, 65539, 131095, 2, 65541, 196608, 2, 65539, 196626, 2, 0, 196627, 2, 1, 196628, 2, 1, 196629, 2, 1, 196630, 2, 1, 196631, 2, 131077, 262144, 2, 65539, 262149, 0, 0, 262150, 0, 2, 262162, 2, 131072, 262163, 2, 4, 262164, 2, 4, 262165, 2, 4, 262166, 2, 4, 262167, 2, 4, 327680, 2, 65539, 327685, 0, 65541, 327686, 0, 65539, 393216, 2, 65539, 393221, 0, 65541, 393222, 0, 65539, 393239, 2, 0, 458752, 2, 65539, 458757, 0, 65536, 458758, 0, 65539, 458775, 2, 65536, 524288, 2, 65539, 524293, 0, 131072, 524294, 0, 131074, 524311, 2, 65536, 589824, 2, 65539, 589847, 2, 65536, 655360, 2, 65539, 655383, 2, 65536, 720896, 2, 65537, 720897, 2, 2, 720900, 2, 0, 720901, 2, 1, 720902, 2, 1, 720903, 2, 1, 720904, 2, 1, 720905, 2, 1, 720906, 2, 1, 720907, 2, 1, 720908, 2, 1, 720909, 2, 1, 720910, 2, 1, 720911, 2, 1, 720912, 2, 1, 720913, 2, 1, 720914, 2, 1, 720915, 2, 2, 720919, 2, 65536, 786432, 2, 65537, 786433, 2, 131075, 786434, 2, 2, 786436, 2, 131072, 786437, 2, 131073, 786438, 2, 131073, 786439, 2, 131073, 786440, 2, 131073, 786441, 2, 131073, 786442, 2, 131073, 786443, 2, 131073, 786444, 2, 131073, 786445, 2, 131073, 786446, 2, 131073, 786447, 2, 131073, 786448, 2, 131073, 786449, 2, 131073, 786450, 2, 131073, 786451, 2, 131074, 786454, 2, 0, 786455, 2, 131077, 851968, 2, 65537, 851969, 2, 65537, 851970, 2, 65538, 851990, 2, 65541, 851991, 2, 65537 )
+
+[node name="PlatformsTileMap" parent="." index="4"]
+tile_data = PoolIntArray( 327694, 1, 0, 458761, 1, 0, 589836, 1, 0, 589842, 1, 0, 655382, 0, 0 )
+
+[node name="Spikes" parent="Traps" index="0" instance=ExtResource( 5 )]
+position = Vector2( 312, 168 )
+
+[node name="Spikes2" parent="Traps" index="1" instance=ExtResource( 5 )]
+position = Vector2( 297, 168 )
+
+[node name="Spikes3" parent="Traps" index="2" instance=ExtResource( 5 )]
+position = Vector2( 282, 168 )
+
+[node name="Spikes4" parent="Traps" index="3" instance=ExtResource( 5 )]
+position = Vector2( 267, 168 )
+
+[node name="Spikes5" parent="Traps" index="4" instance=ExtResource( 5 )]
+position = Vector2( 252, 168 )
+
+[node name="Spikes6" parent="Traps" index="5" instance=ExtResource( 5 )]
+position = Vector2( 237, 168 )
+
+[node name="Spikes7" parent="Traps" index="6" instance=ExtResource( 5 )]
+position = Vector2( 222, 168 )
+
+[node name="Spikes8" parent="Traps" index="7" instance=ExtResource( 5 )]
+position = Vector2( 207, 168 )
+
+[node name="Spikes9" parent="Traps" index="8" instance=ExtResource( 5 )]
+position = Vector2( 193, 168 )
+
+[node name="Spikes10" parent="Traps" index="9" instance=ExtResource( 5 )]
+position = Vector2( 178, 168 )
+
+[node name="Spikes11" parent="Traps" index="10" instance=ExtResource( 5 )]
+position = Vector2( 163, 168 )
+
+[node name="Spikes12" parent="Traps" index="11" instance=ExtResource( 5 )]
+position = Vector2( 148, 168 )
+
+[node name="Spikes13" parent="Traps" index="12" instance=ExtResource( 5 )]
+position = Vector2( 133, 168 )
+
+[node name="Spikes14" parent="Traps" index="13" instance=ExtResource( 5 )]
+position = Vector2( 118, 168 )
+
+[node name="Spikes15" parent="Traps" index="14" instance=ExtResource( 5 )]
+position = Vector2( 103, 168 )
+
+[node name="Spikes16" parent="Traps" index="15" instance=ExtResource( 5 )]
+position = Vector2( 88, 168 )
+
+[node name="Spikes17" parent="Traps" index="16" instance=ExtResource( 5 )]
+position = Vector2( 73, 168 )
+
+[node name="CheckPoint" parent="CheckPoints" index="0" instance=ExtResource( 6 )]
+position = Vector2( 358, 180 )
+
+[node name="Chest" parent="Chests" index="0" instance=ExtResource( 4 )]
+position = Vector2( 345, 44 )
+flip_h = true
+object_scene = ExtResource( 3 )

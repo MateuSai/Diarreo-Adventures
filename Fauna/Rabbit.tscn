@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://platform_metroidvania asset pack v1.01/fauna_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Fauna/RabbitFSM.gd" type="Script" id=2]
+[ext_resource path="res://Fauna/Rabbit.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.75407, 2.83914 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "move"
+length = 0.72
+loop = true
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20, 21, 22, 23 ]
+}
+
+[node name="Rabbit" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 3 )
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine"]
+wait_time = 5.0
+autostart = true
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 5
+hframes = 6
+frame = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.530327, 0.707108 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 2 )
+anims/move = SubResource( 3 )
+
+[node name="FloorRayCasts" type="Node2D" parent="."]
+
+[node name="LeftRayCast" type="RayCast2D" parent="FloorRayCasts"]
+position = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+
+[node name="RightRayCast" type="RayCast2D" parent="FloorRayCasts"]
+position = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+
+[node name="WallRayCasts" type="Node2D" parent="."]
+
+[node name="LeftRayCast" type="RayCast2D" parent="WallRayCasts"]
+enabled = true
+cast_to = Vector2( -8, 0 )
+
+[node name="RightRayCast" type="RayCast2D" parent="WallRayCasts"]
+enabled = true
+cast_to = Vector2( 8, 0 )
+[connection signal="timeout" from="FiniteStateMachine/Timer" to="FiniteStateMachine" method="_on_Timer_timeout"]

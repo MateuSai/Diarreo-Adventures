@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/spikes.png-ede55488eff8c487b44a24872f43e639.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/spikes.png"
+dest_files=[ "res://.import/spikes.png-ede55488eff8c487b44a24872f43e639.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
