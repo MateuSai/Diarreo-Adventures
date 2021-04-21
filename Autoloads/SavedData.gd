@@ -2,7 +2,7 @@ extends Node
 
 const SAVED_DATA_FILE_PATH: String = "user://data.save"
 
-var first_game: bool = true
+var first_game: bool = false
 
 var first_meat_eaten: bool = false
 var first_apple_eaten: bool = false
@@ -39,7 +39,7 @@ var levers_turned: Dictionary = {
 	'2,-1': false,
 	'-1,1': false,
 	'1,2': false,
-	'-3,0': false
+	'-3,0': true
 }
 
 var coins_collected: int = 0
@@ -89,3 +89,45 @@ func load_data() -> void:
 		chests_opened = data.chests_opened
 		levers_turned = data.levers_turned
 		coins_collected = data.coins_collected
+		
+		
+func restore_default_data() -> void:
+	first_game = true
+	first_meat_eaten = false
+	first_apple_eaten = false
+	
+	player_stats = {
+		'max_hp': 2,
+		'max_air_jumps': 0
+	}
+	
+	save_points = {
+		'start_point': {'coor': Vector2.ZERO, 'pos': Vector2(56, 87), 'available': true},
+		'forest': {'coor': Vector2(2,-1), 'pos': Vector2(59, 151), 'available': true},
+		'cave': {'coor': Vector2(0,2), 'pos': Vector2(34, 120), 'available': true},
+		'shaman_territory': {'coor': Vector2(-3, 0), 'pos': Vector2(145, 102), 'available': true}
+	}
+	last_save_point = save_points.start_point
+	
+	chests_opened = {
+		'1,-1': false,
+		'-1,-1': false,
+		'1,2': false,
+		'1,1': false,
+		'2,2': false,
+		'-2,0': false,
+		'-3,-1': false,
+		'-2,-1': false,
+		'3,-2': false
+	}
+	
+	levers_turned = {
+		'-1,0': false,
+		'1,0': false,
+		'2,-1': false,
+		'-1,1': false,
+		'1,2': false,
+		'-3,0': false
+	}
+	
+	coins_collected = 0

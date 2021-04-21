@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/bg_0.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/Shaman/Shaman.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/PlayerDetectorPreFinalBattleDialogue.gd" type="Script" id=4]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 78.7524
@@ -17,6 +16,9 @@ texture = ExtResource( 2 )
 [node name="TileMap" parent="." index="3"]
 tile_data = PoolIntArray( 131072, 2, 2, 196608, 2, 65538, 262144, 2, 65538, 327680, 2, 65538, 393216, 2, 65538, 458752, 2, 65538, 524288, 2, 65538, 524310, 2, 0, 524311, 2, 131076, 589824, 2, 65538, 589846, 2, 65541, 589847, 2, 65537, 655360, 2, 65538, 655382, 2, 65541, 655383, 2, 65537, 720896, 2, 65538, 720918, 2, 65541, 720919, 2, 65537, 786432, 2, 65538, 786454, 2, 65541, 786455, 2, 65537, 851968, 2, 131075, 851969, 2, 1, 851970, 2, 1, 851971, 2, 1, 851972, 2, 1, 851973, 2, 1, 851974, 2, 1, 851975, 2, 1, 851976, 2, 1, 851977, 2, 1, 851978, 2, 1, 851979, 2, 1, 851980, 2, 1, 851981, 2, 1, 851982, 2, 1, 851983, 2, 1, 851984, 2, 1, 851985, 2, 1, 851986, 2, 1, 851987, 2, 1, 851988, 2, 1, 851989, 2, 1, 851990, 2, 131077, 851991, 2, 65537 )
 
+[node name="PlatformsTileMap" parent="." index="4"]
+tile_data = PoolIntArray( 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0 )
+
 [node name="Shaman" parent="Enemies" index="0" instance=ExtResource( 3 )]
 position = Vector2( 185.471, 199.157 )
 
@@ -28,7 +30,4 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectorPreFinalBattleDialogue" index="0"]
 position = Vector2( 363.392, 81.1732 )
 shape = SubResource( 1 )
-
-[node name="Player" parent="." index="14" instance=ExtResource( 5 )]
-position = Vector2( 4.71938, 23.1249 )
 [connection signal="body_entered" from="PlayerDetectorPreFinalBattleDialogue" to="PlayerDetectorPreFinalBattleDialogue" method="_on_PlayerDetectorPreFinalBattleDialogue_body_entered"]

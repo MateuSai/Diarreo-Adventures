@@ -41,11 +41,9 @@ position = Vector2( 100.5, 48.5 )
 
 [node name="JumpOrb" parent="Objects" index="0" instance=ExtResource( 4 )]
 position = Vector2( 60.4797, 73.3418 )
-frame = 4
 
 [node name="JumpOrb2" parent="Objects" index="1" instance=ExtResource( 4 )]
 position = Vector2( 38.8754, 85.8144 )
-frame = 4
 
 [node name="HealthPotion" parent="Objects" index="2" instance=ExtResource( 5 )]
 position = Vector2( 122.703, 58.5201 )

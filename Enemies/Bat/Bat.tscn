@@ -176,4 +176,9 @@ cast_to = Vector2( 8, 0 )
 [node name="LeftRayCast" type="RayCast2D" parent="WallRayCasts"]
 enabled = true
 cast_to = Vector2( -8, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

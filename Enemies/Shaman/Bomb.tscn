@@ -4,7 +4,7 @@
 [ext_resource path="res://platform_metroidvania asset pack v1.01/miscellaneous sprites/bomb_thrown_anim_strip_3.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/Shaman/Bomb.gd" type="Script" id=3]
 
-[sub_resource type="PhysicsMaterial" id=14]
+[sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.3
 
 [sub_resource type="AtlasTexture" id=2]
@@ -51,7 +51,7 @@ region = Rect2( 8, 0, 8, 8 )
 atlas = ExtResource( 2 )
 region = Rect2( 16, 0, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": false,
@@ -64,10 +64,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=14]
 radius = 3.0
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 resource_name = "explode"
 length = 0.98
 step = 0.14
@@ -102,19 +102,15 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.98, 0.981 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.98 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "queue_free"
-}, {
-"args": [  ],
-"method": "_spawn_explosion"
+"method": "destroy"
 } ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "thrown"
+[sub_resource type="Animation" id=16]
 length = 0.3
 step = 0.15
 tracks/0/type = "value"
@@ -148,22 +144,22 @@ radius = 4.0
 [node name="Bomb" type="RigidBody2D"]
 collision_layer = 128
 collision_mask = 131
-physics_material_override = SubResource( 14 )
+physics_material_override = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 13 )
 animation = "on_ground"
 frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 1 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/explode = SubResource( 16 )
-anims/thrown = SubResource( 15 )
+anims/explode = SubResource( 15 )
+anims/thrown = SubResource( 16 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0

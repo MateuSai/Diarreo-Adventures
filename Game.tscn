@@ -4,8 +4,8 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fonts/Boxy-Bold-Font/Boxy-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://UI/GameUI.gd" type="Script" id=4]
+[ext_resource path="res://Music/TheForest.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/GameOverSound.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/cave themeb4.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Fonts/FutilePro.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://UI/DialogueManager.gd" type="Script" id=9]
 [ext_resource path="res://UI/PauseUI.gd" type="Script" id=10]
@@ -111,6 +111,7 @@ one_shot = true
 
 [node name="GameOverSound" type="AudioStreamPlayer" parent="UI/GameOver"]
 stream = ExtResource( 6 )
+volume_db = 8.0
 
 [node name="DialogueManager" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -164,11 +165,22 @@ text = "string_continue_button"
 align = 1
 valign = 1
 
+[node name="MenuButton" type="Label" parent="UI/Pause/VBoxContainer"]
+margin_left = 75.0
+margin_top = 18.0
+margin_right = 113.0
+margin_bottom = 32.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 6 )
+text = "Menu"
+align = 1
+valign = 1
+
 [node name="ExitButton" type="Label" parent="UI/Pause/VBoxContainer"]
 margin_left = 24.0
-margin_top = 18.0
+margin_top = 36.0
 margin_right = 164.0
-margin_bottom = 32.0
+margin_bottom = 50.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 6 )
 text = "string_exit_button"
@@ -176,11 +188,13 @@ align = 1
 valign = 1
 
 [node name="Arrow" type="AnimatedSprite" parent="UI/Pause"]
+position = Vector2( 154, 93 )
 frames = ExtResource( 11 )
 frame = 3
 
-[node name="CaveSounds" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 [connection signal="body_entered" from="Camera2D/Left" to="." method="_on_player_exit_camera" binds= [ Vector2( -1, 0 ) ]]
 [connection signal="body_entered" from="Camera2D/Up" to="." method="_on_player_exit_camera" binds= [ Vector2( 0, -1 ) ]]
 [connection signal="body_entered" from="Camera2D/Right" to="." method="_on_player_exit_camera" binds= [ Vector2( 1, 0 ) ]]
@@ -189,3 +203,4 @@ stream = ExtResource( 7 )
 [connection signal="tween_completed" from="UI/DialogueManager/EnterTween" to="UI/DialogueManager" method="_on_EnterTween_tween_completed"]
 [connection signal="tween_completed" from="UI/DialogueManager/LeaveTween" to="UI/DialogueManager" method="_on_LeaveTween_tween_completed"]
 [connection signal="tween_completed" from="UI/DialogueManager/LeaveTween" to="." method="_on_LeaveTween_tween_completed"]
+[connection signal="resized" from="UI/Pause/VBoxContainer/ContinueButton" to="UI/Pause" method="_on_ContinueButton_resized"]

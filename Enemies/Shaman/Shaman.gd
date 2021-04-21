@@ -24,13 +24,23 @@ func _process(_delta: float) -> void:
 
 
 func thrown_bomb() -> void:
-	var bomb: RigidBody2D = BOMB_SCENE.instance()
-	bomb.global_position = bomb_initial_position.global_position
-	bomb.damage = damage
-	bomb.direction = direction
-	get_parent().add_child(bomb)
-	#bomb.apply_central_impulse(Vector2(direction, -0.25) * 150)
-	bomb.apply_central_impulse((player.global_position - position).normalized() * 150)
+	print((player.global_position - position).normalized())
+	if hp > 2:
+		var bomb: RigidBody2D = BOMB_SCENE.instance()
+		bomb.global_position = bomb_initial_position.global_position
+		bomb.damage = damage
+		bomb.direction = direction
+		get_parent().add_child(bomb)
+		bomb.apply_central_impulse((player.global_position - position).normalized() * 200)
+	else:
+		for i in [-1, 1]:
+			var bomb: RigidBody2D = BOMB_SCENE.instance()
+			bomb.global_position = bomb_initial_position.global_position
+			bomb.damage = damage
+			bomb.direction = direction
+			get_parent().add_child(bomb)
+			bomb.apply_central_impulse(((player.global_position - position).normalized() + Vector2(0, 0.2 * i)) * 200)
+			
 
 
 func _on_PlayerDetector_body_entered(body: KinematicBody2D) -> void:
