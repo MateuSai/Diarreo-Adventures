@@ -107,7 +107,6 @@ valign = 1
 [node name="Arrow" type="AnimatedSprite" parent="."]
 position = Vector2( 150, 113.5 )
 frames = ExtResource( 3 )
-frame = 3
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
