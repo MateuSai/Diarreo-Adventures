@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.70323, 5.8318 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "dead"
 length = 0.6
 tracks/0/type = "value"
@@ -37,7 +37,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "hurt"
 length = 0.5
 tracks/0/type = "value"
@@ -53,8 +53,7 @@ tracks/0/keys = {
 "values": [ 18, 19, 20 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
+[sub_resource type="Animation" id=4]
 length = 0.72
 loop = true
 step = 0.18
@@ -71,8 +70,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "throw"
+[sub_resource type="Animation" id=5]
 length = 2.6
 loop = true
 tracks/0/type = "value"
@@ -102,13 +100,13 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=6]
 radius = 162.099
 
 [node name="Shaman" type="KinematicBody2D"]
 collision_layer = 4
 script = ExtResource( 1 )
-max_hp = 1
+max_hp = 5
 
 [node name="FiniteStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -125,10 +123,10 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/dead = SubResource( 6 )
-anims/hurt = SubResource( 5 )
-anims/idle = SubResource( 3 )
-anims/throw = SubResource( 4 )
+anims/dead = SubResource( 2 )
+anims/hurt = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/throw = SubResource( 5 )
 
 [node name="BombInitialPosition" type="Position2D" parent="."]
 position = Vector2( -4, -4 )
@@ -139,6 +137,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 [connection signal="killed" from="." to="." method="_on_Shaman_killed"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/fg_1.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Enemies/Goblin/Goblin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Bat/Bat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/JumpOrb.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/AudioRandomizer.gd" type="Script" id=10]
+[ext_resource path="res://Sounds/HurtPlayerSound.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 183.784, 10.7432 )
@@ -71,6 +73,11 @@ script = ExtResource( 4 )
 position = Vector2( 200.489, 206 )
 shape = SubResource( 1 )
 
+[node name="Sound" type="AudioStreamPlayer" parent="WaterTileMap/Area2D" index="1"]
+stream = ExtResource( 11 )
+volume_db = 8.0
+script = ExtResource( 10 )
+
 [node name="WaterfallBottomTileMap" parent="WaterTileMap" index="5"]
 tile_data = PoolIntArray( 1376267, 0, 0, 1376268, 0, 0 )
 
@@ -94,9 +101,9 @@ position = Vector2( 33.8541, 109.38 )
 
 [node name="JumpOrb" parent="Objects" index="0" instance=ExtResource( 9 )]
 position = Vector2( 132, 71.2653 )
-frame = 4
+frame = 2
 
 [node name="SavePoint" parent="." index="13" instance=ExtResource( 5 )]
 position = Vector2( 34, 120 )
-frame = 3
+frame = 2
 [connection signal="body_entered" from="WaterTileMap/Area2D" to="WaterTileMap/Area2D" method="_on_player_entered"]

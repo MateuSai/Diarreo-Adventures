@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Fonts/Boxy-Bold-Font/Boxy-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/FutilePro.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/ArrowSpritesFrame.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://Menu.gd" type="Script" id=4]
+[ext_resource path="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/background.png" type="Texture" id=5]
+[ext_resource path="res://Music/awesomeness.ogg" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -108.0
+margin_right = 192.0
+margin_bottom = 108.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 384.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 40 )
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][tornado radius=2.5 freq=2]DIARREO ADVENTURES[/tornado]"
+text = "DIARREO ADVENTURES"
+fit_content_height = true
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 106.0
+margin_right = 384.0
+margin_bottom = 180.0
+custom_constants/separation = 6
+
+[node name="ContinueLabel" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_left = 104.0
+margin_right = 280.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 2 )
+text = "string_continue_button"
+align = 1
+valign = 1
+
+[node name="NewGameLabel" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_left = 99.0
+margin_top = 20.0
+margin_right = 284.0
+margin_bottom = 34.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 2 )
+text = "string_new_game_button"
+align = 1
+valign = 1
+
+[node name="OptionsLabel" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_left = 108.0
+margin_top = 40.0
+margin_right = 275.0
+margin_bottom = 54.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 2 )
+text = "string_options_button"
+align = 1
+valign = 1
+
+[node name="ExitLabel" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_left = 122.0
+margin_top = 60.0
+margin_right = 262.0
+margin_bottom = 74.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 2 )
+text = "string_exit_button"
+align = 1
+valign = 1
+
+[node name="Arrow" type="AnimatedSprite" parent="."]
+position = Vector2( 150, 113.5 )
+frames = ExtResource( 3 )
+playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+[connection signal="resized" from="VBoxContainer/VBoxContainer/ContinueLabel" to="." method="_on_ContinueLabel_resized"]

@@ -10,25 +10,20 @@ var levels_in_scene_tree: Array = []
 var player_position: Vector2 = start_point
 var camera_position: Vector2 = Vector2.ZERO
 
+enum {FOREST, CAVE}
+var music_type: int = 0
+
 onready var levels: Node2D = get_node("Levels")
 onready var player: KinematicBody2D = get_node("Player")
 onready var camera: Camera2D = get_node("Camera2D")
 onready var camera_tween: Tween = get_node("Camera2D/Tween")
 onready var UI: CanvasLayer = get_node("UI")
-onready var cave_sounds: AudioStreamPlayer = get_node("CaveSounds")
+onready var music: AudioStreamPlayer = get_node("Music")
 
 
 func _ready() -> void:
 	assert(levels_directory.open("res://Levels") == OK)
 	var __ = player.connect("killed", UI, "_game_over")
-	
-	var screen_size = OS.get_screen_size()
-	var window_size = OS.get_window_size()
-	OS.set_window_position(screen_size*0.5 - window_size*0.5)
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
-	#TranslationServer.set_locale("ca")
 	
 	_spawn_level(start_point)
 	_check_zone(start_point)
@@ -114,6 +109,9 @@ func _show_pre_final_battle_dialogue() -> void:
 	_immobiliza_player()
 	yield(get_tree().create_timer(0.4), "timeout")
 	UI.show_messages([tr("string_pre_final_battle_dialogue")])
+	music.stream = load("res://Music/battleThemeA.ogg")
+	music.volume_db = -5
+	music.play()
 	
 	
 func _play_constipation_sound() -> void:
@@ -155,10 +153,16 @@ func _on_player_exit_camera(_body: KinematicBody2D, direction: Vector2):
 	
 	
 func _check_zone(coor: Vector2) -> void:
-	if coor.y > 0 and not cave_sounds.playing:
-		cave_sounds.play()
-	elif coor.y <= 0 and cave_sounds.playing:
-		cave_sounds.stop()
+	if coor.y > 0 and music_type != CAVE:
+		music_type = CAVE
+		music.stream = load("res://Music/8BitCave.ogg")
+		music.volume_db = 0
+		music.play()
+	elif coor.y <= 0 and music_type != FOREST:
+		music_type = FOREST
+		music.stream = load("res://Music/TheForest.ogg")
+		music.volume_db = 7
+		music.play()
 
 
 func teleport_player() -> void:

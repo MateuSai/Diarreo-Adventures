@@ -33,7 +33,7 @@ func _on_player_collect(_body: Node2D) -> void:
 		
 	var audio: AudioStreamPlayer = AudioStreamPlayer.new()
 	audio.set_script(AUDIO_RANDOMIZER)
-	audio.volume_db = -5
+	audio.volume_db = 2
 	audio.stream = sound
 	parent.add_child(audio)
 	audio.play()

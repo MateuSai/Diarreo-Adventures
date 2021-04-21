@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/fg_0.png" type="Texture" id=2]
 [ext_resource path="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/fg_1.png" type="Texture" id=3]
 [ext_resource path="res://LeverAndButton/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/AudioRandomizer.gd" type="Script" id=5]
 [ext_resource path="res://Actionables/SpikeShooter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Traps/Spikes.gd" type="Script" id=7]
 [ext_resource path="res://CheckPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sounds/HurtPlayerSound.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 183.784, 10.7432 )
@@ -67,6 +69,11 @@ script = ExtResource( 7 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterTileMap/Area2D" index="0"]
 position = Vector2( 200.489, 206 )
 shape = SubResource( 1 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="WaterTileMap/Area2D" index="1"]
+stream = ExtResource( 9 )
+volume_db = 8.0
+script = ExtResource( 5 )
 
 [node name="bg_2" parent="." index="2"]
 texture = ExtResource( 3 )

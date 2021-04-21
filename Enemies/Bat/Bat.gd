@@ -4,6 +4,7 @@ var initial_pos_y: float = 0.0
 var impulse_force: int = 60
 
 var is_chasing_player: bool = false
+var can_descend: bool = true
 
 var player: KinematicBody2D = null
 
@@ -34,7 +35,7 @@ func chase_player() -> void:
 		self.direction = -1
 		
 	if player.global_position.y < global_position.y or (dir.x < 0.1 and dir.x > -0.1
-														and dir_vector.y < 40):
+														and dir_vector.y < 40 and not can_descend):
 		velocity.y = -impulse_force
 
 
@@ -50,3 +51,7 @@ func check_raycasts() -> void:
 	elif direction == -1:
 		if wall_raycasts.left.is_colliding():
 			self.direction = 1
+
+
+func _on_Timer_timeout() -> void:
+	can_descend = not can_descend

@@ -68,7 +68,7 @@ radius = 3.99052
 
 [node name="JumpOrb" type="AnimatedSprite"]
 frames = SubResource( 12 )
-frame = 3
+frame = 1
 playing = true
 script = ExtResource( 3 )
 
