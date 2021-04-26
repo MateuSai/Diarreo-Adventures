@@ -37,9 +37,9 @@ func get_input() -> void:
 			direction = -1
 		velocity.x = lerp(velocity.x, direction * speed, FRICTION)
 		
-		if Input.is_action_just_pressed("ui_up") and (air_jumps < max_air_jumps or is_on_floor() or can_coyote_jump):
+		if Input.is_action_just_pressed("ui_jump") and (air_jumps < max_air_jumps or is_on_floor() or can_coyote_jump):
 			jump()
-		if Input.is_action_just_released("ui_up"):
+		if Input.is_action_just_released("ui_jump"):
 			jump_cut()
 	if Input.is_action_just_pressed("ui_attack") and can_attack:
 		attack()

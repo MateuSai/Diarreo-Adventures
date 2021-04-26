@@ -113,8 +113,8 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-vframes = 4
 hframes = 6
+vframes = 4
 frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -138,5 +138,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource( 6 )
+
 [connection signal="killed" from="." to="." method="_on_Shaman_killed"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

@@ -195,12 +195,13 @@ frame = 3
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
+
 [connection signal="body_entered" from="Camera2D/Left" to="." method="_on_player_exit_camera" binds= [ Vector2( -1, 0 ) ]]
 [connection signal="body_entered" from="Camera2D/Up" to="." method="_on_player_exit_camera" binds= [ Vector2( 0, -1 ) ]]
 [connection signal="body_entered" from="Camera2D/Right" to="." method="_on_player_exit_camera" binds= [ Vector2( 1, 0 ) ]]
 [connection signal="body_entered" from="Camera2D/Down" to="." method="_on_player_exit_camera" binds= [ Vector2( 0, 1 ) ]]
 [connection signal="timeout" from="UI/GameOver/GameOverTimer" to="UI" method="_on_GameOverTimer_timeout"]
 [connection signal="tween_completed" from="UI/DialogueManager/EnterTween" to="UI/DialogueManager" method="_on_EnterTween_tween_completed"]
-[connection signal="tween_completed" from="UI/DialogueManager/LeaveTween" to="UI/DialogueManager" method="_on_LeaveTween_tween_completed"]
 [connection signal="tween_completed" from="UI/DialogueManager/LeaveTween" to="." method="_on_LeaveTween_tween_completed"]
+[connection signal="tween_completed" from="UI/DialogueManager/LeaveTween" to="UI/DialogueManager" method="_on_LeaveTween_tween_completed"]
 [connection signal="resized" from="UI/Pause/VBoxContainer/ContinueButton" to="UI/Pause" method="_on_ContinueButton_resized"]

@@ -6,6 +6,7 @@ string_attack_sign,Space or X button in a controller to attack,Espai o botó X d
 string_shaman_sign,"Shaman, be careful.","Xaman, ves amb compte.","Chamán, ten cuidado."
 string_cliff_sign,Cliff ahead,Precipici a davant,Precipicio delante
 string_exit_sign,Exit,Sortida,Salida
+string_savepoint_sign,"Press Z, or Y in a controller, to access the save point","Apreta Z, o Y en un comandement, per accedir al punt de guardat","Aprieta Z, o Y en un mando, para acceder al punto de guardado"
 string_start_point_save_point,Start Point,Punt d’inici,Punto Inicial
 string_forest_save_point,Forest,Bosc,Bosque
 string_cave_save_point,Underground galleries,Galeries subterrànies,Galerías subterráneas
@@ -21,3 +22,12 @@ string_exit_button,Exit,Sortir,Salir
 string_travel_button,Travel,Viatge,Viaja
 string_new_game_button,New Game,Nova Partida,Nueva Partida
 string_options_button,Options,Opcions,Opciones
+string_language,Language,Idioma,Lenguaje
+string_music,Music,Musica,Musica
+string_back,Back,Enrere,Atrás
+string_fullscreen,Full Screen,Pantalla Completa,Pantalla Completa
+string_congratulations,Congratulations!!!,Enhorabona!!!,Enhorabuena!!!
+string_final_message,"Diarreo, after curing his diarrhea and hemorrhoids, had a happy life","En Diarreo, després de curar la seva diarrea i hemorroides, va tenir una vida feliç","Diarreo, despues de curar su diarrea y hemorroides, tuvo una vida feliz"
+string_thanks,Thanks for playing,Gràcies per jugar,Gracias por jugar
+string_erase_data,All of the data will be deleted. Are you sure?,S’eliminara totes les dades. N’estas segur?,Se eliminaran todos los datos. Estas seguro?
+string_yes,Yes,Sí,Sí

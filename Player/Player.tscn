@@ -396,8 +396,8 @@ one_shot = true
 [node name="TeleportSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = 5.0
-[connection signal="hp_changed" from="." to="." method="_on_Player_hp_changed"]
 [connection signal="hp_changed" from="." to="UI" method="_on_Player_hp_changed"]
+[connection signal="hp_changed" from="." to="." method="_on_Player_hp_changed"]
 [connection signal="max_hp_increased" from="." to="." method="_on_Player_max_hp_increased"]
 [connection signal="spawn_hearts" from="." to="UI" method="_on_Player_spawn_hearts"]
 [connection signal="timeout" from="ImmunityTimer" to="." method="_on_ImmunityTimer_timeout"]

@@ -53,6 +53,7 @@ func _select_option() -> void:
 			_change_pause_state()
 		MENU:
 			# Go to the main menu
+			_change_pause_state()
 			SceneChanger.change_scene_to("res://Menu.tscn")
 		EXIT:
 			get_tree().quit()

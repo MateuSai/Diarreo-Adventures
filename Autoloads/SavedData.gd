@@ -1,6 +1,12 @@
 extends Node
 
 const SAVED_DATA_FILE_PATH: String = "user://data.save"
+const SAVED_MENU_DATA_FILE_PATH: String = "user://menu_data.save"
+
+var game_created: bool = false
+var current_language: int = 0
+var music_on: bool = true
+var full_screen: bool = false
 
 var first_game: bool = false
 
@@ -73,6 +79,20 @@ func save_data() -> void:
 	file.close()
 	
 	
+func save_menu_data() -> void:
+	var data: Dictionary = {
+		'game_created': game_created,
+		'current_language': current_language,
+		'music_on': music_on,
+		'full_screen': full_screen
+	}
+	
+	var file: File = File.new()
+	var __ = file.open(SAVED_MENU_DATA_FILE_PATH, File.WRITE)
+	file.store_var(data)
+	file.close()
+	
+	
 func load_data() -> void:
 	var file: File = File.new()
 	if file.file_exists(SAVED_DATA_FILE_PATH):
@@ -91,6 +111,19 @@ func load_data() -> void:
 		coins_collected = data.coins_collected
 		
 		
+func load_menu_data() -> void:
+	var file: File = File.new()
+	if file.file_exists(SAVED_MENU_DATA_FILE_PATH):
+		var __ = file.open(SAVED_MENU_DATA_FILE_PATH, File.READ)
+		var data: Dictionary = file.get_var()
+		file.close()
+		
+		game_created = data.game_created
+		current_language = data.current_language
+		music_on = data.music_on
+		full_screen = data.full_screen
+		
+		
 func restore_default_data() -> void:
 	first_game = true
 	first_meat_eaten = false
@@ -102,10 +135,10 @@ func restore_default_data() -> void:
 	}
 	
 	save_points = {
-		'start_point': {'coor': Vector2.ZERO, 'pos': Vector2(56, 87), 'available': true},
-		'forest': {'coor': Vector2(2,-1), 'pos': Vector2(59, 151), 'available': true},
-		'cave': {'coor': Vector2(0,2), 'pos': Vector2(34, 120), 'available': true},
-		'shaman_territory': {'coor': Vector2(-3, 0), 'pos': Vector2(145, 102), 'available': true}
+		'start_point': {'coor': Vector2.ZERO, 'pos': Vector2(56, 87), 'available': false},
+		'forest': {'coor': Vector2(2,-1), 'pos': Vector2(59, 151), 'available': false},
+		'cave': {'coor': Vector2(0,2), 'pos': Vector2(34, 120), 'available': false},
+		'shaman_territory': {'coor': Vector2(-3, 0), 'pos': Vector2(145, 102), 'available': false}
 	}
 	last_save_point = save_points.start_point
 	

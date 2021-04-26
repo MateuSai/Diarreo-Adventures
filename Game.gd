@@ -109,9 +109,14 @@ func _show_pre_final_battle_dialogue() -> void:
 	_immobiliza_player()
 	yield(get_tree().create_timer(0.4), "timeout")
 	UI.show_messages([tr("string_pre_final_battle_dialogue")])
-	music.stream = load("res://Music/battleThemeA.ogg")
-	music.volume_db = -5
-	music.play()
+	
+	if SavedData.music_on:
+		music.stream = load("res://Music/battleThemeA.ogg")
+		music.volume_db = -5
+		music.play()
+	while true:
+		_play_constipation_sound()
+		yield(get_tree().create_timer(rand_range(2, 5)), "timeout")
 	
 	
 func _play_constipation_sound() -> void:
@@ -153,16 +158,17 @@ func _on_player_exit_camera(_body: KinematicBody2D, direction: Vector2):
 	
 	
 func _check_zone(coor: Vector2) -> void:
-	if coor.y > 0 and music_type != CAVE:
-		music_type = CAVE
-		music.stream = load("res://Music/8BitCave.ogg")
-		music.volume_db = 0
-		music.play()
-	elif coor.y <= 0 and music_type != FOREST:
-		music_type = FOREST
-		music.stream = load("res://Music/TheForest.ogg")
-		music.volume_db = 7
-		music.play()
+	if SavedData.music_on:
+		if coor.y > 0 and music_type != CAVE:
+			music_type = CAVE
+			music.stream = load("res://Music/8BitCave.ogg")
+			music.volume_db = 0
+			music.play()
+		elif coor.y <= 0 and music_type != FOREST:
+			music_type = FOREST
+			music.stream = load("res://Music/TheForest.ogg")
+			music.volume_db = 7
+			music.play()
 
 
 func teleport_player() -> void:

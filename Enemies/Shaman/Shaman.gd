@@ -6,6 +6,8 @@ const CURE_POTION: PackedScene = preload("res://Objects/CurePotion.tscn")
 var player_seen: bool = false
 var player: KinematicBody2D = null
 
+var potion_droped: bool = false
+
 onready var bomb_initial_position: Position2D = get_node("BombInitialPosition")
 onready var player_detector: Area2D = get_node("PlayerDetector")
 
@@ -24,22 +26,21 @@ func _process(_delta: float) -> void:
 
 
 func thrown_bomb() -> void:
-	print((player.global_position - position).normalized())
 	if hp > 2:
 		var bomb: RigidBody2D = BOMB_SCENE.instance()
-		bomb.global_position = bomb_initial_position.global_position
+		bomb.global_position = bomb_initial_position.global_position + Vector2(384, 0)
 		bomb.damage = damage
 		bomb.direction = direction
 		get_parent().add_child(bomb)
-		bomb.apply_central_impulse((player.global_position - position).normalized() * 200)
+		bomb.apply_central_impulse((player.global_position - global_position).normalized() * 200)
 	else:
 		for i in [-1, 1]:
 			var bomb: RigidBody2D = BOMB_SCENE.instance()
-			bomb.global_position = bomb_initial_position.global_position
+			bomb.global_position = bomb_initial_position.global_position + Vector2(384, 0)
 			bomb.damage = damage
 			bomb.direction = direction
 			get_parent().add_child(bomb)
-			bomb.apply_central_impulse(((player.global_position - position).normalized() + Vector2(0, 0.2 * i)) * 200)
+			bomb.apply_central_impulse(((player.global_position - global_position).normalized() + Vector2(0, 0.2 * i)) * 200)
 			
 
 
@@ -51,7 +52,9 @@ func _on_PlayerDetector_body_entered(body: KinematicBody2D) -> void:
 
 
 func _on_Shaman_killed() -> void:
-	_spawn_potion()
+	if not potion_droped:
+		potion_droped = true
+		_spawn_potion()
 	
 	
 func _spawn_potion() -> void:

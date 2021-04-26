@@ -159,5 +159,6 @@ anims/idle = SubResource( 15 )
 anims/open = SubResource( 16 )
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_player_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_player_exited"]

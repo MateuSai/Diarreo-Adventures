@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-9099e40f265ad72263696ab5892e2016.stex"
+path="res://.import/en.png-b5588c3ed6502ab569f26a5b5050f093.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://platform_metroidvania asset pack v1.01/tiles and background_foreground/background.png"
-dest_files=[ "res://.import/background.png-9099e40f265ad72263696ab5892e2016.stex" ]
+source_file="res://Flags/en.png"
+dest_files=[ "res://.import/en.png-b5588c3ed6502ab569f26a5b5050f093.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

@@ -25,13 +25,17 @@ position = Vector2( 80, 88.5 )
 text = "string_move_sign"
 
 [node name="Sign3" parent="Decorations" index="2" instance=ExtResource( 3 )]
-position = Vector2( 223.5, 200 )
+position = Vector2( 224, 200 )
 texture = ExtResource( 7 )
 text = "string_forest_sign"
 
 [node name="Vase" parent="Decorations" index="3" instance=ExtResource( 8 )]
 position = Vector2( 263.5, 200 )
 
+[node name="Sign4" parent="Decorations" index="4" instance=ExtResource( 3 )]
+position = Vector2( 48, 88.5 )
+text = "string_savepoint_sign"
+
 [node name="SavePoint" parent="." index="11" instance=ExtResource( 1 )]
-position = Vector2( 56, 87 )
-frame = 8
+position = Vector2( 64, 87 )
+frame = 6

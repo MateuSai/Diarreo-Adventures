@@ -27,12 +27,19 @@ onready var teleport_menu_arrow: AnimatedSprite = get_node("CanvasLayer/Teleport
 onready var coins_found: HBoxContainer = get_node("CanvasLayer/CoinsFound")
 onready var coins_label: Label = get_node("CanvasLayer/CoinsFound/Label")
 
+onready var save_popup_animation_player: AnimationPlayer = get_node("CanvasLayer/SavePopup/AnimationPlayer")
+
 
 func _ready() -> void:
 	menu.hide()
 	teleport_menu.hide()
 	coins_found.hide()
 	coordinates = owner.get_name()
+	var splited_coor: Array = coordinates.split(",")
+	
+	for i in SavedData.save_points:
+		if SavedData.save_points[i].coor == Vector2(splited_coor[0], splited_coor[1]) and SavedData.save_points[i].available == false:
+			SavedData.save_points[i].available = true
 	
 	_delete_unreached_save_points()
 	
@@ -171,9 +178,10 @@ func _on_Area2D_player_entered(body: KinematicBody2D) -> void:
 	player = body
 	player.hp = player.max_hp
 	SavedData.save_data()
+	save_popup_animation_player.play("save")
 	
 	if not active:
-		if player.last_save_point != null:
+		if player.last_save_point != null and player.last_save_point is Area2D:
 			player.last_save_point.play("default")
 		player.last_save_point = self
 		
